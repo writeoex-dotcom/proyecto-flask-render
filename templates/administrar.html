@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Registros</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Lista de Personas</h1>
+
+    <!-- 🔗 Volver -->
+    <a href="/" class="link">← Volver al Registro</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for p in registros %}
+            <tr>
+                <td>{{ p[0] }}</td>
+                <td>{{ p[1] }}</td>
+                <td>{{ p[2] }}</td>
+                <td>{{ p[3] }}</td>
+                <td>{{ p[4] }}</td>
+                <td>{{ p[5] }}</td>
+                <td>
+                    <!-- 🔥 BOTÓN ELIMINAR -->
+                    <a href="/eliminar/{{ p[0] }}" 
+                       class="btn-eliminar"
+                       onclick="return confirm('¿Seguro que deseas eliminar este registro?')">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- 🧠 Mensaje si no hay datos -->
+    {% if registros|length == 0 %}
+        <p style="text-align:center; margin-top:10px;">
+            No hay registros aún.
+        </p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

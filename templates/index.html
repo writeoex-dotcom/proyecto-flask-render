@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Persona</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Registro de Persona</h1>
+
+    <!-- 🔗 Ir a administrar -->
+    <a href="/administrar" class="link">Administrar Registros</a>
+
+    <!-- 🔥 MENSAJE -->
+    {% if mensaje %}
+        <div class="mensaje">
+            {{ mensaje }}
+        </div>
+    {% endif %}
+
+    <form action="/registrar" method="POST">
+
+        <label>DNI:</label>
+        <input type="text" name="dni" placeholder="Ingrese su DNI" required pattern="[0-9]+">
+
+        <label>Nombre:</label>
+        <input type="text" name="nombre" placeholder="Ingrese su nombre" required>
+
+        <label>Apellido:</label>
+        <input type="text" name="apellido" placeholder="Ingrese su apellido" required>
+
+        <label>Dirección:</label>
+        <input type="text" name="direccion" placeholder="Ingrese su dirección">
+
+        <label>Teléfono:</label>
+        <input type="text" name="telefono" placeholder="Ingrese su teléfono" pattern="[0-9]+">
+
+        <button type="submit">Registrar</button>
+    </form>
+</div>
+
+</body>
+</html>
